@@ -134,8 +134,10 @@
     <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Cost" Type="Double" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
     <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Manufacturer" Relationship="BekaryDBModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
     <NavigationProperty Name="ProductType" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
     <NavigationProperty Name="ProductHistory" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="Product" ToRole="ProductHistory" />

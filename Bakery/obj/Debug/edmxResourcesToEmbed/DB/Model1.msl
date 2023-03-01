@@ -68,8 +68,10 @@
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="BekaryDBModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
           <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="Title" ColumnName="Title" />

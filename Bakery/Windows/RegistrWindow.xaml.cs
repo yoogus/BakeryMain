@@ -39,6 +39,18 @@ namespace Bakery.Windows
                 MessageBox.Show("Пароль должен состоять не менее чем из 8 символов");
             }
 
+            ContextDB.User.Add(new DB.User
+            {
+                Login = tbxLogin.Text,
+                Password = tbxPass.Password,
+                Email = tbxEmail.Text,
+            });
+
+            ContextDB.SaveChanges();
+
+            MessageBox.Show("OK");
+
+
         }
     }
 }

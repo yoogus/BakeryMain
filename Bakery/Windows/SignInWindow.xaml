@@ -21,9 +21,11 @@
                FontSize="20"
                FontFamily="Segoe UI Black" Height="34" Width="168"/>
         <TextBox Name="tbxLogin"  
+                 Height="36"
+                 Width="170"
                  materialDesign:HintAssist.Hint="Введите логин"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                 Grid.Row="1" Margin="91,8,91,8"/>
+                 Grid.Row="1"/>
         <materialDesign:PackIcon 
                  Kind="Account" 
                  Grid.Row="1"
@@ -31,11 +33,14 @@
                  Height="20"
                  Margin="60,22,0,0"/>
         <PasswordBox
+                 x:Name="tbxPass"
                  Grid.Row="2"
+                 Height="36"
+                 Width="170"
                  materialDesign:HintAssist.Hint="Введите пароль"
                  materialDesign:PasswordBoxAssist.Password="{Binding Password2, Mode=TwoWay}"
                  materialDesign:TextFieldAssist.HasClearButton="True"
-                 Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" Margin="91,8,91,8" />
+                 Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}"/>
 
         <materialDesign:PackIcon 
                  Kind="Key" 

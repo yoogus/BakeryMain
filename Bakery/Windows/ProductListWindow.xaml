@@ -29,6 +29,24 @@
         </Border>
 
         <Border Grid.Row="1" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+
+            <WrapPanel Grid.Row="1" 
+                   VerticalAlignment="Center">
+
+                <TextBlock Text="Поиск:"
+                       FontSize="16"
+                       Height="20"
+                       Margin="20 0 10 0"/>
+
+                <TextBox x:Name="tbxPoisk"
+                     FontSize="18"
+                     Width="200"
+                     Height="25"
+                     VerticalContentAlignment="Center"  
+                     TextChanged="tbxPoisk_TextChanged"/>
+
+            </WrapPanel>
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
             </Border.Effect>

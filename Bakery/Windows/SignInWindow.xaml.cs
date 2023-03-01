@@ -13,8 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using  Bakery.ClassHelper;
 using Bakery.Windows;
 using Bakery;
+using System.Runtime.Remoting.Contexts;
 
 namespace Bakery
 {
@@ -37,9 +39,23 @@ namespace Bakery
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ProductListWindow productListWindow = new ProductListWindow();  
-            productListWindow.Show();
-            this.Close();
+
+            var userAuth = EFClass.ContextDB.User.ToList()
+                .Where(i => i.Login == tbxLogin.Text &&
+                i.Password == tbxPass.Password)
+                .FirstOrDefault();
+
+            if (userAuth != null)
+            {
+                ProductListWindow productListWindow = new ProductListWindow();
+                productListWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
+            
         }
     }
 }

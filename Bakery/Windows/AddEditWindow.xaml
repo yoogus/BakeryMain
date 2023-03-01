@@ -31,28 +31,25 @@
                     Content="Выбрать фото"
                     Width="200"
                     Height="40"
-                    Margin="5"/>
+                    Margin="5"
+                    Click="BtnChooseImage_Click"/>
 
-            <TextBox x:Name="TbNameProduct"
+            <TextBox x:Name="tbxName"
                      Height="50"
-                     FontSize="20"
-                      materialDesign:HintAssist.Hint="Введите название товара"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     FontSize="15"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Введите название товара"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                      TextAlignment="Left"
                      Foreground="Black"/>
-            <TextBlock
-                Height="50"
-                FontSize="20"
-                TextAlignment="Left"
-                Foreground="Gray"
-                Text="Введите описание товара"
-                Margin="0 20 0 0"
-                />
 
             <TextBox
                 x:Name="TbDisc"
                 Height="50"
-                FontSize="20"
+                materialDesign:HintAssist.Hint="Введите название товара"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                FontSize="15"
+                Margin="10"
                 Foreground="Black"/>
 
             <TextBlock Height="50"
@@ -60,11 +57,12 @@
                        FontSize="20"
                        TextAlignment="Left"
                        Foreground="Gray"
-                       Margin="0 20 0 0 "/>
+                       Margin="10"/>
 
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
-                     FontSize="20"                     
+                     FontSize="20"                
+                     Margin="10"
                      Foreground="Black"/>
 
 
@@ -74,7 +72,8 @@
                     Width="200"
                     Margin="0 40 0 0 " 
                     HorizontalAlignment="Center"
-                    Content="Добавить">
+                    Content="Добавить"
+                    Click="BtnAddEdit_Click">
 
             </Button>
 
