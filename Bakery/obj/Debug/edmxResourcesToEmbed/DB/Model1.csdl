@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BekaryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BekaryDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BekaryDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Client" EntityType="BekaryDBModel.Client" />
+    <EntitySet Name="Employee" EntityType="BekaryDBModel.Employee" />
+    <EntitySet Name="Gender" EntityType="BekaryDBModel.Gender" />
+    <EntitySet Name="Manufacturer" EntityType="BekaryDBModel.Manufacturer" />
+    <EntitySet Name="Product" EntityType="BekaryDBModel.Product" />
+    <EntitySet Name="ProductHistory" EntityType="BekaryDBModel.ProductHistory" />
+    <EntitySet Name="ProductType" EntityType="BekaryDBModel.ProductType" />
+    <EntitySet Name="Purchase" EntityType="BekaryDBModel.Purchase" />
+    <EntitySet Name="PurchaseProduct" EntityType="BekaryDBModel.PurchaseProduct" />
+    <EntitySet Name="sysdiagrams" EntityType="BekaryDBModel.sysdiagrams" />
+    <EntitySet Name="User" EntityType="BekaryDBModel.User" />
+    <AssociationSet Name="FK_Purchase_Client" Association="BekaryDBModel.FK_Purchase_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Employee" Association="BekaryDBModel.FK_Purchase_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="BekaryDBModel.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType" Association="BekaryDBModel.FK_Product_ProductType">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductHistory_Product" Association="BekaryDBModel.FK_ProductHistory_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductHistory" EntitySet="ProductHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseProduct_Product" Association="BekaryDBModel.FK_PurchaseProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PurchaseProduct" EntitySet="PurchaseProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseProduct_Purchase" Association="BekaryDBModel.FK_PurchaseProduct_Purchase">
+      <End Role="Purchase" EntitySet="Purchase" />
+      <End Role="PurchaseProduct" EntitySet="PurchaseProduct" />
+    </AssociationSet>
+    <AssociationSet Name="UserClient" Association="BekaryDBModel.UserClient">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Логин" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Purchase" Relationship="BekaryDBModel.FK_Purchase_Client" FromRole="Client" ToRole="Purchase" />
+    <NavigationProperty Name="User" Relationship="BekaryDBModel.UserClient" FromRole="Client" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="INN" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MedicalBook" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Purchase" Relationship="BekaryDBModel.FK_Purchase_Employee" FromRole="Employee" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BeginningWork" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_Product_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+    <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Manufacturer" Relationship="BekaryDBModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
+    <NavigationProperty Name="ProductType" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+    <NavigationProperty Name="ProductHistory" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="Product" ToRole="ProductHistory" />
+    <NavigationProperty Name="PurchaseProduct" Relationship="BekaryDBModel.FK_PurchaseProduct_Product" FromRole="Product" ToRole="PurchaseProduct" />
+  </EntityType>
+  <EntityType Name="ProductHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="QuantityAfter" Type="Int32" Nullable="false" />
+    <Property Name="QuantityBefore" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="ProductHistory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="DateBuy" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="BekaryDBModel.FK_Purchase_Client" FromRole="Purchase" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="BekaryDBModel.FK_Purchase_Employee" FromRole="Purchase" ToRole="Employee" />
+    <NavigationProperty Name="PurchaseProduct" Relationship="BekaryDBModel.FK_PurchaseProduct_Purchase" FromRole="Purchase" ToRole="PurchaseProduct" />
+  </EntityType>
+  <EntityType Name="PurchaseProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_PurchaseProduct_Product" FromRole="PurchaseProduct" ToRole="Product" />
+    <NavigationProperty Name="Purchase" Relationship="BekaryDBModel.FK_PurchaseProduct_Purchase" FromRole="PurchaseProduct" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="BekaryDBModel.UserClient" FromRole="User" ToRole="Client" />
+  </EntityType>
+  <Association Name="FK_Purchase_Client">
+    <End Type="BekaryDBModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="BekaryDBModel.Purchase" Role="Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Employee">
+    <End Type="BekaryDBModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="BekaryDBModel.Purchase" Role="Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer">
+    <End Type="BekaryDBModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+    <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType">
+    <End Type="BekaryDBModel.ProductType" Role="ProductType" Multiplicity="1" />
+    <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductHistory_Product">
+    <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="BekaryDBModel.ProductHistory" Role="ProductHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductHistory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseProduct_Product">
+    <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="BekaryDBModel.PurchaseProduct" Role="PurchaseProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PurchaseProduct">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseProduct_Purchase">
+    <End Type="BekaryDBModel.Purchase" Role="Purchase" Multiplicity="1" />
+    <End Type="BekaryDBModel.PurchaseProduct" Role="PurchaseProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purchase">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PurchaseProduct">
+        <PropertyRef Name="PurchaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserClient">
+    <End Type="BekaryDBModel.Client" Role="Client" Multiplicity="*" />
+    <End Type="BekaryDBModel.User" Role="User" Multiplicity="*" />
+  </Association>
+</Schema>

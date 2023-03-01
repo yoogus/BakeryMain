@@ -1,0 +1,85 @@
+﻿<Window x:Class="Bakery.Windows.AddEditWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bakery.Windows"
+        mc:Ignorable="d"
+         Title="AddEditProductWindow" 
+        Height="800" 
+        Width="500">
+    <Grid>
+        <StackPanel Orientation="Vertical" 
+                    Margin="40 0 40 0 " >
+
+
+            <TextBlock Text="Добавление товара" 
+                       FontSize="20" 
+                       TextAlignment="Center" 
+                       Margin="10"
+                       Foreground="Black"/>
+
+            <Border BorderBrush="Gray"
+                    BorderThickness="1"
+                    Width="200"
+                    Height="200">
+                <Image x:Name="ImgProduct"/>
+            </Border>
+
+            <Button x:Name="BtnChooseImage" 
+                    Content="Выбрать фото"
+                    Width="200"
+                    Height="40"
+                    Margin="5"/>
+
+            <TextBox x:Name="TbNameProduct"
+                     Height="50"
+                     FontSize="20"
+                      materialDesign:HintAssist.Hint="Введите название товара"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                     TextAlignment="Left"
+                     Foreground="Black"/>
+            <TextBlock
+                Height="50"
+                FontSize="20"
+                TextAlignment="Left"
+                Foreground="Gray"
+                Text="Введите описание товара"
+                Margin="0 20 0 0"
+                />
+
+            <TextBox
+                x:Name="TbDisc"
+                Height="50"
+                FontSize="20"
+                Foreground="Black"/>
+
+            <TextBlock Height="50"
+                       Text="Выберите тип товара"
+                       FontSize="20"
+                       TextAlignment="Left"
+                       Foreground="Gray"
+                       Margin="0 20 0 0 "/>
+
+            <ComboBox x:Name="CMBTypeProduct"
+                     Height="50"
+                     FontSize="20"                     
+                     Foreground="Black"/>
+
+
+            <Button x:Name="BtnAddEdit"
+                    Height="50"
+                    FontSize="20"
+                    Width="200"
+                    Margin="0 40 0 0 " 
+                    HorizontalAlignment="Center"
+                    Content="Добавить">
+
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>
