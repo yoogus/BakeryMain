@@ -18,6 +18,7 @@ namespace Bakery.DB
         public Product()
         {
             this.ProductHistory = new HashSet<ProductHistory>();
+            this.ProductPhoto = new HashSet<ProductPhoto>();
             this.PurchaseProduct = new HashSet<PurchaseProduct>();
         }
     
@@ -25,15 +26,17 @@ namespace Bakery.DB
         public string Title { get; set; }
         public double Cost { get; set; }
         public int Quantity { get; set; }
-        public string Description { get; set; }
         public int ManufacturerID { get; set; }
-        public int ProductTypeID { get; set; }
-        public byte[] Image { get; set; }
+        public int TypeID { get; set; }
+        public string Description { get; set; }
+        public byte[] PhotoProd { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }
         public virtual ProductType ProductType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductHistory> ProductHistory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductPhoto> ProductPhoto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseProduct> PurchaseProduct { get; set; }
     }

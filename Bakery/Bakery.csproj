@@ -243,6 +243,9 @@
     <Compile Include="DB\ProductHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB\ProductPhoto.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\ProductType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

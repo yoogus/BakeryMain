@@ -44,10 +44,10 @@
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Cost" Type="float" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="50" />
     <Property Name="ManufacturerID" Type="int" Nullable="false" />
-    <Property Name="ProductTypeID" Type="int" Nullable="false" />
-    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhotoProd" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="ProductHistory">
     <Key>
@@ -59,11 +59,19 @@
     <Property Name="QuantityBefore" Type="int" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <EntityType Name="ProductType">
+  <EntityType Name="ProductPhoto">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Purchase">
@@ -131,7 +139,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Product">
-        <PropertyRef Name="ProductTypeID" />
+        <PropertyRef Name="TypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -144,6 +152,18 @@
       </Principal>
       <Dependent Role="ProductHistory">
         <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPhoto_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductPhoto" Type="Self.ProductPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductPhoto">
+        <PropertyRef Name="IdProduct" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -257,6 +277,7 @@
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductHistory" EntityType="Self.ProductHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PurchaseProduct" EntityType="Self.PurchaseProduct" Schema="dbo" store:Type="Tables" />
@@ -274,6 +295,10 @@
     <AssociationSet Name="FK_ProductHistory_Product" Association="Self.FK_ProductHistory_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductHistory" EntitySet="ProductHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPhoto_Product" Association="Self.FK_ProductPhoto_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductPhoto" EntitySet="ProductPhoto" />
     </AssociationSet>
     <AssociationSet Name="FK_Purchase_Client" Association="Self.FK_Purchase_Client">
       <End Role="Client" EntitySet="Client" />

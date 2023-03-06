@@ -33,6 +33,7 @@ namespace Bakery.DB
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductHistory> ProductHistory { get; set; }
+        public virtual DbSet<ProductPhoto> ProductPhoto { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Purchase> Purchase { get; set; }
         public virtual DbSet<PurchaseProduct> PurchaseProduct { get; set; }

@@ -49,10 +49,10 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cost" Type="float" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="ManufacturerID" Type="int" Nullable="false" />
-          <Property Name="ProductTypeID" Type="int" Nullable="false" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhotoProd" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ProductHistory">
           <Key>
@@ -64,11 +64,19 @@
           <Property Name="QuantityBefore" Type="int" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductType">
+        <EntityType Name="ProductPhoto">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Purchase">
@@ -136,7 +144,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="ProductTypeID" />
+              <PropertyRef Name="TypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -149,6 +157,18 @@
             </Principal>
             <Dependent Role="ProductHistory">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPhoto_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductPhoto" Type="Self.ProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductPhoto">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -262,6 +282,7 @@
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductHistory" EntityType="Self.ProductHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseProduct" EntityType="Self.PurchaseProduct" Schema="dbo" store:Type="Tables" />
@@ -279,6 +300,10 @@
           <AssociationSet Name="FK_ProductHistory_Product" Association="Self.FK_ProductHistory_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductHistory" EntitySet="ProductHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPhoto_Product" Association="Self.FK_ProductPhoto_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Client" Association="Self.FK_Purchase_Client">
             <End Role="Client" EntitySet="Client" />
@@ -346,6 +371,7 @@
           <EntitySet Name="Manufacturer" EntityType="BekaryDBModel.Manufacturer" />
           <EntitySet Name="Product" EntityType="BekaryDBModel.Product" />
           <EntitySet Name="ProductHistory" EntityType="BekaryDBModel.ProductHistory" />
+          <EntitySet Name="ProductPhoto" EntityType="BekaryDBModel.ProductPhoto" />
           <EntitySet Name="ProductType" EntityType="BekaryDBModel.ProductType" />
           <EntitySet Name="Purchase" EntityType="BekaryDBModel.Purchase" />
           <EntitySet Name="PurchaseProduct" EntityType="BekaryDBModel.PurchaseProduct" />
@@ -371,6 +397,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductHistory" EntitySet="ProductHistory" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductPhoto_Product" Association="BekaryDBModel.FK_ProductPhoto_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
+          </AssociationSet>
           <AssociationSet Name="FK_PurchaseProduct_Product" Association="BekaryDBModel.FK_PurchaseProduct_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="PurchaseProduct" EntitySet="PurchaseProduct" />
@@ -383,7 +413,7 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -443,13 +473,14 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-          <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoProd" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Manufacturer" Relationship="BekaryDBModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="ProductType" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="ProductHistory" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="Product" ToRole="ProductHistory" />
+          <NavigationProperty Name="ProductPhoto" Relationship="BekaryDBModel.FK_ProductPhoto_Product" FromRole="Product" ToRole="ProductPhoto" />
           <NavigationProperty Name="PurchaseProduct" Relationship="BekaryDBModel.FK_PurchaseProduct_Product" FromRole="Product" ToRole="PurchaseProduct" />
         </EntityType>
         <EntityType Name="ProductHistory">
@@ -463,11 +494,20 @@
           <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="ProductHistory" ToRole="Product" />
         </EntityType>
-        <EntityType Name="ProductType">
+        <EntityType Name="ProductPhoto">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_ProductPhoto_Product" FromRole="ProductPhoto" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
         </EntityType>
@@ -558,7 +598,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="ProductTypeID" />
+              <PropertyRef Name="TypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -571,6 +611,18 @@
             </Principal>
             <Dependent Role="ProductHistory">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPhoto_Product">
+          <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="BekaryDBModel.ProductPhoto" Role="ProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductPhoto">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -602,7 +654,7 @@
           <End Type="BekaryDBModel.Client" Role="Client" Multiplicity="*" />
           <End Type="BekaryDBModel.User" Role="User" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -675,10 +727,10 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="BekaryDBModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
-                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="PhotoProd" ColumnName="PhotoProd" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -693,6 +745,15 @@
                 <ScalarProperty Name="QuantityBefore" ColumnName="QuantityBefore" />
                 <ScalarProperty Name="QuantityAfter" ColumnName="QuantityAfter" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPhoto">
+            <EntityTypeMapping TypeName="BekaryDBModel.ProductPhoto">
+              <MappingFragment StoreEntitySet="ProductPhoto">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -754,7 +815,7 @@
               <ScalarProperty Name="id" ColumnName="IdClient" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

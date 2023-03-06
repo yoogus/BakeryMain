@@ -53,11 +53,11 @@ namespace Bakery.Windows
 
             tbxName.Text = product.Title.ToString();
             TbDisc.Text = product.Description.ToString();
-            CMBTypeProduct.SelectedItem = ContextDB.ProductType.Where(i => i.ID == product.ProductTypeID).FirstOrDefault();
+            CMBTypeProduct.SelectedItem = ContextDB.ProductType.Where(i => i.ID == product.TypeID).FirstOrDefault();
 
-            if (product.Image != null)
+            if (product.ProductPhoto != null)
             {
-                using (MemoryStream stream = new MemoryStream(product.Image))
+                using (MemoryStream stream = new MemoryStream(product.PhotoProd))
                 {
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
@@ -88,7 +88,7 @@ namespace Bakery.Windows
                 editProduct.ID = (CMBTypeProduct.SelectedItem as ProductType).ID;
                 if (pathPhoto != null)
                 {
-                    editProduct.Image = File.ReadAllBytes(pathPhoto);
+                    editProduct.PhotoProd = File.ReadAllBytes(pathPhoto);
                 }
                 ContextDB.SaveChanges();
                 MessageBox.Show("OK");
@@ -102,7 +102,7 @@ namespace Bakery.Windows
                 product.ID = (CMBTypeProduct.SelectedItem as ProductType).ID;
                 if (pathPhoto != null)
                 {
-                    product.Image = File.ReadAllBytes(pathPhoto);
+                    product.PhotoProd = File.ReadAllBytes(pathPhoto);
                 }
 
                 ContextDB.Product.Add(product);

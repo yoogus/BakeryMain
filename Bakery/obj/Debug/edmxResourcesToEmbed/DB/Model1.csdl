@@ -37,6 +37,7 @@
     <EntitySet Name="Manufacturer" EntityType="BekaryDBModel.Manufacturer" />
     <EntitySet Name="Product" EntityType="BekaryDBModel.Product" />
     <EntitySet Name="ProductHistory" EntityType="BekaryDBModel.ProductHistory" />
+    <EntitySet Name="ProductPhoto" EntityType="BekaryDBModel.ProductPhoto" />
     <EntitySet Name="ProductType" EntityType="BekaryDBModel.ProductType" />
     <EntitySet Name="Purchase" EntityType="BekaryDBModel.Purchase" />
     <EntitySet Name="PurchaseProduct" EntityType="BekaryDBModel.PurchaseProduct" />
@@ -61,6 +62,10 @@
     <AssociationSet Name="FK_ProductHistory_Product" Association="BekaryDBModel.FK_ProductHistory_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductHistory" EntitySet="ProductHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPhoto_Product" Association="BekaryDBModel.FK_ProductPhoto_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductPhoto" EntitySet="ProductPhoto" />
     </AssociationSet>
     <AssociationSet Name="FK_PurchaseProduct_Product" Association="BekaryDBModel.FK_PurchaseProduct_Product">
       <End Role="Product" EntitySet="Product" />
@@ -134,13 +139,14 @@
     <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Cost" Type="Double" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
-    <Property Name="ProductTypeID" Type="Int32" Nullable="false" />
-    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoProd" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Manufacturer" Relationship="BekaryDBModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
     <NavigationProperty Name="ProductType" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
     <NavigationProperty Name="ProductHistory" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="Product" ToRole="ProductHistory" />
+    <NavigationProperty Name="ProductPhoto" Relationship="BekaryDBModel.FK_ProductPhoto_Product" FromRole="Product" ToRole="ProductPhoto" />
     <NavigationProperty Name="PurchaseProduct" Relationship="BekaryDBModel.FK_PurchaseProduct_Product" FromRole="Product" ToRole="PurchaseProduct" />
   </EntityType>
   <EntityType Name="ProductHistory">
@@ -154,11 +160,20 @@
     <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_ProductHistory_Product" FromRole="ProductHistory" ToRole="Product" />
   </EntityType>
-  <EntityType Name="ProductType">
+  <EntityType Name="ProductPhoto">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IdProduct" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_ProductPhoto_Product" FromRole="ProductPhoto" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Product" Relationship="BekaryDBModel.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
   </EntityType>
@@ -249,7 +264,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Product">
-        <PropertyRef Name="ProductTypeID" />
+        <PropertyRef Name="TypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -262,6 +277,18 @@
       </Principal>
       <Dependent Role="ProductHistory">
         <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPhoto_Product">
+    <End Type="BekaryDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="BekaryDBModel.ProductPhoto" Role="ProductPhoto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductPhoto">
+        <PropertyRef Name="IdProduct" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

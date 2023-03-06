@@ -24,9 +24,24 @@ namespace Bakery.Windows
     /// </summary>
     public partial class ProductListWindow : Window
     {
+
+        List<string> strings = new List<string>() 
+        {
+            "По умолчанию",
+            "По возрастанию",
+            "По убыванию",
+            "По цене"
+
+        };
+
         public ProductListWindow()
         {
             InitializeComponent();
+
+            CmdSort.ItemsSource = strings;
+            CmdSort.SelectedIndex = 0;
+
+            GetListProduct();
         }
 
         private void GetListProduct()
@@ -34,8 +49,32 @@ namespace Bakery.Windows
             List<Product> products = new List<Product>();
             products = EFClass.ContextDB.Product.ToList();
 
+            var StartIndex = CmdSort.SelectedIndex;
+
+            //Поиск
 
             products = products.Where(i => i.Title.ToLower().Contains(tbxPoisk.Text.ToLower())).ToList();
+
+            //Сортировка
+
+            switch (StartIndex)
+            {
+                case 0:
+                    products = products.OrderBy(i => i.ID).ToList();
+                    break;
+                case 1:
+                    products = products.OrderBy(i => i.Title.ToLower()).ToList();
+                    break;
+                case 2:
+                    products = products.OrderByDescending(i => i.Title.ToLower()).ToList();
+                    break;
+                case 3:
+                    products = products.OrderBy(i => i.Cost).ToList();
+                    break;
+
+                default:
+                    break;
+            }
 
             LvProduct.ItemsSource = products;
         }
@@ -47,6 +86,11 @@ namespace Bakery.Windows
         }
 
         private void tbxPoisk_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GetListProduct();
+        }
+
+        private void CmdSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GetListProduct();
         }

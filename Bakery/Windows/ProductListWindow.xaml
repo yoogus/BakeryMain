@@ -45,6 +45,12 @@
                      VerticalContentAlignment="Center"  
                      TextChanged="tbxPoisk_TextChanged"/>
 
+                <ComboBox 
+                    x:Name="CmdSort"
+                    Width="120"
+                    Margin="30 0 0 0" SelectionChanged="CmdSort_SelectionChanged"
+                    />
+
             </WrapPanel>
 
             <Border.Effect>
