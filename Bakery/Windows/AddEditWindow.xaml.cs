@@ -2,6 +2,8 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -55,7 +57,7 @@ namespace Bakery.Windows
             TbDisc.Text = product.Description.ToString();
             CMBTypeProduct.SelectedItem = ContextDB.ProductType.Where(i => i.ID == product.TypeID).FirstOrDefault();
 
-            if (product.ProductPhoto != null)
+            if (product.PhotoProd != null)
             {
                 using (MemoryStream stream = new MemoryStream(product.PhotoProd))
                 {
@@ -68,6 +70,7 @@ namespace Bakery.Windows
                     ImgProduct.Source = bitmapImage;
 
                 }
+
             }
 
 

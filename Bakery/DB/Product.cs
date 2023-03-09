@@ -11,7 +11,8 @@ namespace Bakery.DB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Drawing;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +27,19 @@ namespace Bakery.DB
         public string Title { get; set; }
         public double Cost { get; set; }
         public int Quantity { get; set; }
+        public string GetQuantity {
+            get
+            {
+                if (Quantity != 0)
+                {
+                    return Quantity.ToString() + " шт.";
+                }
+                else
+                {
+                    return "Нет в наличии";
+                }
+            }
+                                 }
         public int ManufacturerID { get; set; }
         public int TypeID { get; set; }
         public string Description { get; set; }

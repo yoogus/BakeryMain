@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using static Bakery.ClassHelper.EFClass;
+using Bakery.DB;
 
 namespace Bakery.Windows
 {
@@ -30,7 +31,8 @@ namespace Bakery.Windows
             "По умолчанию",
             "По возрастанию",
             "По убыванию",
-            "По цене"
+            "По цене",
+            "В наличии"
 
         };
 
@@ -71,6 +73,9 @@ namespace Bakery.Windows
                 case 3:
                     products = products.OrderBy(i => i.Cost).ToList();
                     break;
+                case 4:
+                    products = products.OrderBy(i => i.Quantity).ToList();
+                    break;
 
                 default:
                     break;
@@ -81,7 +86,23 @@ namespace Bakery.Windows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditWindow addEditWindow = new AddEditWindow();  
+            var button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            var product = button.DataContext as Product;
+
+            AddEditWindow editProductWindow = new AddEditWindow(product);
+            editProductWindow.ShowDialog();
+
+            GetListProduct();
+        }
+
+        private void btnadd_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditWindow addEditWindow = new AddEditWindow();
             addEditWindow.ShowDialog();
         }
 
@@ -93,6 +114,11 @@ namespace Bakery.Windows
         private void CmdSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GetListProduct();
+        }
+
+        private void imgCheck_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
     }
 }

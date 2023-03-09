@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="83a7729f28af428a8851bf13e0a43d96" Name="Diagram1">
-        <EntityTypeShape EntityType="BekaryDBModel.Client" Width="1.5" PointX="3.75" PointY="14.625" />
-        <EntityTypeShape EntityType="BekaryDBModel.Employee" Width="1.5" PointX="3.75" PointY="11.25" />
+        <EntityTypeShape EntityType="BekaryDBModel.Client" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="BekaryDBModel.Employee" Width="1.5" PointX="0.75" PointY="8.125" />
         <EntityTypeShape EntityType="BekaryDBModel.Gender" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="BekaryDBModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="BekaryDBModel.Product" Width="1.5" PointX="3" PointY="3.25" />
-        <EntityTypeShape EntityType="BekaryDBModel.ProductHistory" Width="1.5" PointX="5.25" PointY="2.625" />
-        <EntityTypeShape EntityType="BekaryDBModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="BekaryDBModel.ProductHistory" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="BekaryDBModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="5.625" />
         <EntityTypeShape EntityType="BekaryDBModel.ProductType" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="BekaryDBModel.Purchase" Width="1.5" PointX="6" PointY="12.875" />
-        <EntityTypeShape EntityType="BekaryDBModel.PurchaseProduct" Width="1.5" PointX="8.25" PointY="3.875" />
-        <EntityTypeShape EntityType="BekaryDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="BekaryDBModel.User" Width="1.5" PointX="6" PointY="16.625" />
+        <EntityTypeShape EntityType="BekaryDBModel.Purchase" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="BekaryDBModel.PurchaseProduct" Width="1.5" PointX="5.25" PointY="1.875" />
+        <EntityTypeShape EntityType="BekaryDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BekaryDBModel.User" Width="1.5" PointX="3" PointY="13.5" />
         <AssociationConnector Association="BekaryDBModel.FK_Purchase_Client" />
         <AssociationConnector Association="BekaryDBModel.FK_Purchase_Employee" />
         <AssociationConnector Association="BekaryDBModel.FK_Product_Manufacturer" />

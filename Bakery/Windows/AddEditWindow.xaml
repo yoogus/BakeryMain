@@ -46,18 +46,18 @@
             <TextBox
                 x:Name="TbDisc"
                 Height="50"
-                materialDesign:HintAssist.Hint="Введите название товара"
+                materialDesign:HintAssist.Hint="Введите описание товара"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                 FontSize="15"
                 Margin="10"
                 Foreground="Black"/>
 
-            <TextBlock Height="50"
+            <TextBlock Height="26"
                        Text="Выберите тип товара"
-                       FontSize="20"
+                       FontSize="15"
                        TextAlignment="Left"
                        Foreground="Gray"
-                       Margin="10"/>
+                       Margin="10 40 0 0"/>
 
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
