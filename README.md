@@ -32,6 +32,10 @@
 
 ![image](https://user-images.githubusercontent.com/110523242/224115051-6fe3d7ac-99f7-4691-83c3-ec2f40f11359.png)
 
->Окно Изменения\Добавления товара 💥
+>Окно добавления товара 💥
 
 ![image](https://user-images.githubusercontent.com/110523242/222238041-61956044-8e15-4fbf-af79-08f07de4bb82.png)
+
+>Окно изменения товара 💥
+
+![image](https://user-images.githubusercontent.com/110523242/224115337-168da5d6-dcd7-499c-90a8-7af2e65e610b.png)
