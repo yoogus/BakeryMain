@@ -6,7 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bakery.Windows"
         mc:Ignorable="d"
-        Title="ProductListWindow" Height="800" Width="1240">
+        Title="Каталог товаров" 
+        Height="800" 
+        Width="1240"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="#ffdadada">
         <Grid.RowDefinitions>
             <RowDefinition Height="52"/>
@@ -85,17 +88,12 @@
                                 BorderBrush="Blue"
                                 Margin="8">
                             <StackPanel>
-                                <Image x:Name="imgMain"
+                                <Image
+                                       Source="{Binding PhotoProd}"
                                        Height="150"
                                        Width="120"
-                                       Margin="0 8 0 0">
-                                    <Image.Source>
-                                        <Binding Path="Image">
-                                            <Binding.TargetNullValue>
-                                                <ImageSource>/Res/Images/Pirog.jpg</ImageSource>
-                                            </Binding.TargetNullValue>
-                                        </Binding>
-                                    </Image.Source>
+                                       Margin="8">
+                                    
                                 </Image>
 
                                 <TextBlock  x:Name="tbxTitle"
@@ -110,27 +108,50 @@
                                            FontSize="14"
                                            Margin="10 5 0 0"/>
 
+
                                 <Image x:Name="imgCheck"
                                        Width="15"
                                        Height="15"
                                        Margin="80 8 0 0"
-                                       Source="/Res/images/Check.png"
-                                       IsVisibleChanged="imgCheck_IsVisibleChanged"/>
+                                       Source="/Res/images/Check.png"/>
 
                                 </Grid>
                                 <TextBlock FontSize="14"
                                                TextAlignment="Right"
-                                               Margin="10 5 10 0">
+                                               Margin="10 5 20 0">
                                         <Run Text="{Binding Cost}"/>
                                         <Run Text="руб."/>
                                     </TextBlock>
-                                                                    
-                                <Button Name="btnEdit"
-                                        Content="Редактировать"
-                                        Width="110"
+
+                                <WrapPanel>
+
+                                    <Button Name="btnEdit"
+                                        Width="50"
                                         Click="btnEdit_Click"
-                                        FontSize="11"
-                                        Margin="10"/>
+                                        Margin="10" 
+                                        Background="#FFF1F1F1" 
+                                        BorderBrush="#FF515151">
+
+                                        <Image Source="/Res/images/pencil-plus-outline.png"/>
+
+
+                                    </Button>
+
+                                    <Button
+                                        x:Name="btnAddCard"
+                                        Width="50"
+                                        Click="btnAddCard_Click"
+                                        Margin="10" 
+                                        Background="#FFC5FDB4" 
+                                        BorderBrush="#FF515151" Cursor="Hand">
+
+                                        <Image Source="/Res/images/basket-outline.png" />
+
+
+                                    </Button>
+
+                                </WrapPanel>
+                               
                             </StackPanel>
                         </Border>
 

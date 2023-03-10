@@ -71,6 +71,7 @@ namespace Bakery.Windows
 
                 }
 
+
             }
 
 
@@ -88,7 +89,6 @@ namespace Bakery.Windows
 
                 editProduct.Title = tbxName.Text;
                 editProduct.Description = TbDisc.Text;
-                editProduct.ID = (CMBTypeProduct.SelectedItem as ProductType).ID;
                 if (pathPhoto != null)
                 {
                     editProduct.PhotoProd = File.ReadAllBytes(pathPhoto);

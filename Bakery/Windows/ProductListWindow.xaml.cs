@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using static Bakery.ClassHelper.EFClass;
-using Bakery.DB;
+using Bakery.Windows;
 
 namespace Bakery.Windows
 {
@@ -116,9 +116,18 @@ namespace Bakery.Windows
             GetListProduct();
         }
 
-        private void imgCheck_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void btnAddCard_Click(object sender, RoutedEventArgs e)
         {
-            
+            var button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            var product = button.DataContext as Product;
+
+            CardProductClass.products.Add(product);
+            MessageBox.Show($"Товар {product.Title} успешно добавлен в корзину");
         }
     }
 }
