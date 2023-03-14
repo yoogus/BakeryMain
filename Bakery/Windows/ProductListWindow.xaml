@@ -51,8 +51,20 @@
                 <ComboBox 
                     x:Name="CmdSort"
                     Width="120"
-                    Margin="30 0 0 0" SelectionChanged="CmdSort_SelectionChanged"
-                    />
+                    Margin="30 0 0 0" 
+                    SelectionChanged="CmdSort_SelectionChanged"
+                    Cursor="Hand"/>
+                <Grid>
+
+
+                    <Image Source="/Res/images/basket-outline.png" 
+                           Margin="740,3,0,4"
+                           MouseLeftButtonDown="Image_MouseLeftButtonDown"
+                           Cursor="Hand"/>
+
+
+
+                </Grid>
 
             </WrapPanel>
 
@@ -83,7 +95,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border Width="150"
-                                Height="280"
+                                Height="290"
                                 BorderThickness="1"
                                 BorderBrush="Blue"
                                 Margin="8">

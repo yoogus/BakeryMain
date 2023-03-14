@@ -271,6 +271,9 @@
     <Compile Include="Windows\AddEditWindow.xaml.cs">
       <DependentUpon>AddEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CardProductWindow.xaml.cs">
+      <DependentUpon>CardProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ProductListWindow.xaml.cs">
       <DependentUpon>ProductListWindow.xaml</DependentUpon>
     </Compile>
@@ -278,6 +281,10 @@
       <DependentUpon>RegistrWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Windows\AddEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CardProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,6 +358,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\images\basket-outline-custom.png" />
     <Resource Include="Res\images\1122.jpg" />
     <Resource Include="Res\images\basket-outline.png" />
     <Resource Include="Res\images\pencil-plus-outline.png" />

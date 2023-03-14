@@ -129,5 +129,11 @@ namespace Bakery.Windows
             CardProductClass.products.Add(product);
             MessageBox.Show($"Товар {product.Title} успешно добавлен в корзину");
         }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CardProductWindow cardProductWindow = new CardProductWindow(); 
+            cardProductWindow.ShowDialog();
+        }
     }
 }
