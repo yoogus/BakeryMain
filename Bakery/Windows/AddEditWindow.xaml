@@ -61,7 +61,7 @@
 
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
-                     FontSize="20"                
+                     FontSize="15"                
                      Margin="10"
                      Foreground="Black"/>
 

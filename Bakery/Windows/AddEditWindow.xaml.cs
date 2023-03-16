@@ -42,7 +42,7 @@ namespace Bakery.Windows
 
             CMBTypeProduct.ItemsSource = ContextDB.ProductType.ToList();
             CMBTypeProduct.SelectedIndex = 0;
-            CMBTypeProduct.DisplayMemberPath = "TypeName";
+            CMBTypeProduct.DisplayMemberPath = "Name";
         }
 
         public AddEditWindow(Product product)
@@ -51,7 +51,7 @@ namespace Bakery.Windows
 
             CMBTypeProduct.ItemsSource = ContextDB.ProductType.ToList();
             CMBTypeProduct.SelectedIndex = 0;
-            CMBTypeProduct.DisplayMemberPath = "TypeName";
+            CMBTypeProduct.DisplayMemberPath = "Name";
 
             tbxName.Text = product.Title.ToString();
             TbDisc.Text = product.Description.ToString();
