@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\App.xaml
-5-2038077848
+81760051595
 2-973498431
-29-1428962848
+33-975738026
 162586906501
-Windows\AddEditWindow.xaml;Windows\CardProductWindow.xaml;Windows\ProductListWindow.xaml;Windows\SignInWindow.xaml;Windows\RegistrWindow.xaml;
+Windows\AddEditWindow.xaml;Windows\CardProductWindow.xaml;Windows\EmployeeWindow.xaml;Windows\MenuWindow.xaml;Windows\ProductListWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\RegistrWindow.xaml;
 
-False
+True
 

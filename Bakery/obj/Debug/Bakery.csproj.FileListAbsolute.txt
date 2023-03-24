@@ -312,3 +312,9 @@ C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Baker
 C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Bakery.csproj.CopyComplete
 C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Bakery.exe
 C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Bakery.pdb
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\MenuWindow.g.cs
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\MenuWindow.baml
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\EmployeeWindow.g.cs
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\ProfileWindow.g.cs
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\EmployeeWindow.baml
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\Windows\ProfileWindow.baml

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using  Bakery.ClassHelper;
+using Bakery.ClassHelper;
 using Bakery.Windows;
 using Bakery;
 using System.Runtime.Remoting.Contexts;
@@ -47,8 +47,11 @@ namespace Bakery
 
             if (userAuth != null)
             {
-                ProductListWindow productListWindow = new ProductListWindow();
-                productListWindow.Show();
+
+                UserDataClass.user = userAuth;
+
+                MenuWindow menuWindow = new MenuWindow();   
+                menuWindow.Show();
                 this.Close();
             }
             else
