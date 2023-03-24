@@ -39,3 +39,8 @@
 >Окно изменения товара 💥
 
 ![image](https://user-images.githubusercontent.com/110523242/224115337-168da5d6-dcd7-499c-90a8-7af2e65e610b.png)
+
+>Окно меню 💥
+
+![image](https://user-images.githubusercontent.com/110523242/227446100-1cef0a51-12f7-4e3e-836b-d0c2ebd1e2d8.png)
+
