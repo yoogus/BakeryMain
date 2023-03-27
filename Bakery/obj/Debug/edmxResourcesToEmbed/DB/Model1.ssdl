@@ -20,6 +20,7 @@
     <Property Name="Phone" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="INN" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="MedicalBook" Type="int" Nullable="false" />
+    <Property Name="EmployeePhoto" Type="varbinary(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>

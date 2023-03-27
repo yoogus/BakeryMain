@@ -8,6 +8,6 @@ namespace Bakery.ClassHelper
 {
     internal class EFClass
     {
-        public static DB.Entities ContextDB { get; } = new DB.Entities();
+        public static DB.BekaryDBEntities7 ContextDB { get; } = new DB.BekaryDBEntities7();
     }
 }

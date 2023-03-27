@@ -5,8 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bakery.Windows"
         mc:Ignorable="d"
-        Title="EmployeeWindow" Height="450" Width="800">
-    <Grid>
-        
+        Height="800" 
+        Width="1240"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#ffdadada">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="57"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
+            </Border.Effect>
+
+            <TextBlock Text="Наши сотрудники"
+                       Height="25"
+                       FontWeight="Bold"
+                       FontSize="17"
+                       HorizontalAlignment="Center"/>
+
+        </Border>
+
+        <Border Grid.Row="1" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
+            </Border.Effect>
+        </Border>
+
+        <Border Grid.Row="2" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
+            </Border.Effect>
+
+            <ListView Grid.Row="2"
+                      x:Name="LvProduct"
+                      Margin="5"
+                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="150"
+                                Height="290"
+                                BorderThickness="1"
+                                BorderBrush="Blue"
+                                Margin="8">
+                            <StackPanel>
+                                <Image
+                                       Source="{Binding EmployeePhoto}"
+                                       Height="150"
+                                       Width="120"
+                                       Margin="8">
+
+                                </Image>
+
+                                <TextBlock  x:Name="tbxTitle"
+                                            Text="{Binding FirstName}"
+                                            FontSize="14"
+                                            Margin="10 0 0 0"/>
+
+                                <TextBlock  x:Name="tbxQuantity"
+                                            Text="{Binding LastName}"
+                                            FontSize="14"
+                                            Margin="10 5 0 0"/>
+
+                                <TextBlock  FontSize="14"
+                                            TextAlignment="Left"
+                                            Margin="10 5 20 0"
+                                            Text="{Binding Patronymic}"/>
+
+
+                            </StackPanel>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </Border>
+
+        <Border Grid.Row="3" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
+            </Border.Effect>
+        </Border>
     </Grid>
 </Window>

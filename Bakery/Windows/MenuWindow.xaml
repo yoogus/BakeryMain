@@ -37,17 +37,18 @@
 
         <StackPanel>
 
-            <Button Content="Список товаров"
+                <Button Content="Список товаров"
                     Width="170"
                     Height="40"
                     Margin="0 100 0 0"
                     Click="Button_Click"/>
 
-            <Button Content="Список сотрудников"
+                <Button Content="Список сотрудников"
                     Width="170"
                     Height="40"
                     Margin="0 25 0 0"
                     Click="Button_Click_1"/>
+
 
         </StackPanel>
     </Grid>

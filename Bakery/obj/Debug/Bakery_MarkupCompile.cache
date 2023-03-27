@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\obj\Debug\
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain1\Bakery\obj\Debug\
 Bakery
 none
 false
 DEBUG;TRACE
-C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain\Bakery\App.xaml
-81760051595
+C:\Users\IMac10\source\repos\FitnessClubRasima\BakeryMain1\Bakery\App.xaml
+91852709750
 2-973498431
-321106350592
-162586906501
-Windows\AddEditWindow.xaml;Windows\CardProductWindow.xaml;Windows\EmployeeWindow.xaml;Windows\MenuWindow.xaml;Windows\ProductListWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\RegistrWindow.xaml;
+33-1118457167
+162-774054048
+Windows\AddEditWindow.xaml;Windows\CardProductWindow.xaml;Windows\EmployeeEditWindow.xaml;Windows\EmployeeWindow.xaml;Windows\MenuWindow.xaml;Windows\ProductListWindow.xaml;Windows\ProfileWindow.xaml;Windows\SignInWindow.xaml;Windows\RegistrWindow.xaml;
 
 False
 
