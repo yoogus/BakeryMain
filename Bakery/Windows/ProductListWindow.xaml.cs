@@ -126,8 +126,14 @@ namespace Bakery.Windows
 
             var product = button.DataContext as Product;
 
-            CardProductClass.products.Add(product);
-            MessageBox.Show($"Товар {product.Title} успешно добавлен в корзину");
+            if (product.Quantity <= 0)
+            {
+                MessageBox.Show("К сожалению товар закончился");
+            } else
+            {
+                CardProductClass.productsList.Add(product);
+                MessageBox.Show($"Товар {product.Title} успешно добавлен в корзину");
+            }
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

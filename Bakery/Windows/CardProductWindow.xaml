@@ -16,13 +16,131 @@
             <RowDefinition Height="103*"/>
         </Grid.RowDefinitions>
         <Border Margin="12,12,12,12" Grid.Row="0" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Grid>
+                <TextBlock Text="Корзина"
+                           FontSize="25"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <Button x:Name="btnBack"
+                    Content="Назад"
+                    Grid.Row="3"
+                    Width="100"
+                    Height="35"
+                    Margin="30 0 0 0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Cursor="Hand"/>
+            </Grid>
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0"/>
             </Border.Effect>
 
         </Border>
 
+        <Border Background="White"
+                Width="129"
+                Height="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="0 0 20 0"
+                Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+
+            <Grid>
+                <Image Source="/Res/images/account-circle.png"
+                   Margin="0 0 85 0"
+                   Width="24"/>
+
+                <TextBlock x:Name="tbxUser"
+                   Text="Пользователь"
+                   Width="90"
+                   Height="19"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"/>
+            </Grid>
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" Opacity="0.195" ShadowDepth="2" Direction="313"/>
+            </Border.Effect>
+        </Border>
+
+
         <Border Margin="12,12,12,12" Grid.Row="1" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <ListView Grid.Row="2"
+                      x:Name="LvProductCard"
+                      Margin="5"
+                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="150"
+                                Height="290"
+                                BorderThickness="1"
+                                BorderBrush="Blue"
+                                Margin="8">
+                            <StackPanel>
+                                <Image
+                                       Source="{Binding PhotoProd}"
+                                       Height="150"
+                                       Width="120"
+                                       Margin="8">
+
+                                </Image>
+
+                                <TextBlock  x:Name="tbxTitle"
+                                            Text="{Binding Title}"
+                                            FontSize="14"
+                                            Margin="10 0 0 0"/>
+
+                                <Grid>
+
+                                    <TextBlock x:Name="tbxQuantity"
+                                           Text="{Binding Quantity}"
+                                           FontSize="14"
+                                           Margin="10 5 0 0"/>
+                                    
+                                </Grid>
+                                <TextBlock FontSize="14"
+                                               TextAlignment="Right"
+                                               Margin="10 5 20 0">
+                                        <Run Text="{Binding Cost}"/>
+                                        <Run Text="руб."/>
+                                </TextBlock>
+
+                                <WrapPanel>
+                                    <Button
+                                        x:Name="btnRemoveCard"
+                                        Width="50"
+                                        Click="btnRemoveCard_Click"
+                                        Margin="90 10 0 0" 
+                                        Background="#FFF56969" 
+                                        BorderBrush="#FF515151" 
+                                        Cursor="Hand">
+
+                                        <Image Source="/Res/images/basket-outline.png" />
+
+
+                                    </Button>
+
+                                </WrapPanel>
+
+                            </StackPanel>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0"/>
             </Border.Effect>
@@ -33,8 +151,8 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" ShadowDepth="0"/>
             </Border.Effect>
-
-            <Button x:Name="btnadd"
+            <Grid>
+                <Button x:Name="btnadd"
                     Content="К оформлению"
                     Grid.Row="3"
                     Width="150"
@@ -44,6 +162,12 @@
                     VerticalAlignment="Center"
                     Cursor="Hand"/>
 
+            <TextBlock x:Name="tbxAmount"
+                       Width="150"
+                       Height="40"
+                       HorizontalAlignment="Left"
+                       Margin="20 0 0 0"/>
+            </Grid>
         </Border>
 
     </Grid>

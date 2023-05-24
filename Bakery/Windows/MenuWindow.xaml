@@ -16,24 +16,23 @@
                 Margin="0 9 6 0"
                 Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="14" Opacity="0.195" ShadowDepth="2" Direction="313"/>
-            </Border.Effect>
-
-            <Image Source="/Res/images/account-circle.png"
+            <Grid>
+                <Image Source="/Res/images/account-circle.png"
                    Margin="0 0 85 0"
                    Width="24"/>
-            
 
-        </Border>
-
-        <TextBlock x:Name="tbxUser"
+                <TextBlock x:Name="tbxUser"
                    Text="Пользователь"
                    Width="90"
                    Height="19"
                    HorizontalAlignment="Right"
-                   VerticalAlignment="Top"
-                   Margin="0 10 5 0"/>
+                   VerticalAlignment="Top"/>
+            </Grid>
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="14" Opacity="0.195" ShadowDepth="2" Direction="313"/>
+            </Border.Effect>
+        </Border>
 
         <StackPanel>
 

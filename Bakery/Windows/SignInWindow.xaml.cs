@@ -47,7 +47,6 @@ namespace Bakery
 
             if (userAuth != null)
             {
-
                 UserDataClass.user = userAuth;
 
                 MenuWindow menuWindow = new MenuWindow();   

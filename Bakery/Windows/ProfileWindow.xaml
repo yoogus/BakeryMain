@@ -14,12 +14,41 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+            <Grid>
+                <TextBlock
+                    Text="Профиль"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+
+            </Grid>
             <Border.Effect>
                 <DropShadowEffect BlurRadius="14" ShadowDepth="1"/>
             </Border.Effect>
 
-            
+        </Border>
 
+        <Border Background="White"
+                Width="129"
+                Height="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Margin="0 0 20 0"
+                Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
+
+            <Grid>
+                <Image Source="/Res/images/account-circle.png"
+                   Margin="0 0 85 0"
+                   Width="24"/>
+
+                <TextBlock x:Name="tbxUser"
+                   Text="Пользователь"
+                   Width="90"
+                   Height="19"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"/>
+            </Grid>
         </Border>
 
         <Border Grid.Row="1" Margin="8,8,8,8" Background="White" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}">
